@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bn126k5ng0mgh"]
+
+[ext_resource type="Script" uid="uid://bhl1f4golabr5" path="res://car.gd" id="1_7822p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_70n44"]
+size = Vector3(2, 1, 3.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsljm"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dudpu"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8vxiq"]
+material = SubResource("StandardMaterial3D_dudpu")
+size = Vector3(1.8, 0.5, 3.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7822p"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65igh"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7fp6i"]
+material = SubResource("StandardMaterial3D_65igh")
+size = Vector3(1.35, 0.55, 1.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ep5ya"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a5ewq"]
+material = SubResource("StandardMaterial3D_ep5ya")
+size = Vector3(0.3, 0.65, 0.65)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4u7sg"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5o3d4"]
+material = SubResource("StandardMaterial3D_4u7sg")
+size = Vector3(0.3, 0.65, 0.65)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4l2ln"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1100a"]
+material = SubResource("StandardMaterial3D_4l2ln")
+size = Vector3(0.3, 0.65, 0.65)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chsoa"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p3nph"]
+material = SubResource("StandardMaterial3D_chsoa")
+size = Vector3(0.3, 0.65, 0.65)
+
+[node name="Car" type="CharacterBody3D" unique_id=1870841645]
+script = ExtResource("1_7822p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=191934189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("BoxShape3D_70n44")
+
+[node name="Visuals Node3D" type="Node3D" parent="." unique_id=1051271518]
+
+[node name="Body MeshInstance3D" type="MeshInstance3D" parent="Visuals Node3D" unique_id=1862289375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+material_override = SubResource("StandardMaterial3D_tsljm")
+mesh = SubResource("BoxMesh_8vxiq")
+
+[node name="Cabin MeshInstance3D" type="MeshInstance3D" parent="Visuals Node3D" unique_id=1053490407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0.15)
+material_override = SubResource("StandardMaterial3D_7822p")
+mesh = SubResource("BoxMesh_7fp6i")
+
+[node name="WheelFL MeshInstance3D" type="MeshInstance3D" parent="Visuals Node3D" unique_id=1119199510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0.4, -1.1)
+mesh = SubResource("BoxMesh_a5ewq")
+
+[node name="WheelFR MeshInstance3D" type="MeshInstance3D" parent="Visuals Node3D" unique_id=1787207102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.4, -1.1)
+mesh = SubResource("BoxMesh_5o3d4")
+
+[node name="WheelRL MeshInstance3D" type="MeshInstance3D" parent="Visuals Node3D" unique_id=1267228814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0.4, 1.1)
+mesh = SubResource("BoxMesh_1100a")
+
+[node name="WheelRR MeshInstance3D" type="MeshInstance3D" parent="Visuals Node3D" unique_id=681696687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.4, 1.1)
+mesh = SubResource("BoxMesh_p3nph")
+
+[node name="CameraRig" type="SpringArm3D" parent="." unique_id=1068195164]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 3.0142798, 0)
+spring_length = 7.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=757780925]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 2.9802322e-08, 0, -2.9802322e-08, 1.0000001, 0, -0.94640446, 3.5320299)
+current = true
